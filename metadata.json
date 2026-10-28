@@ -1,0 +1,6 @@
+{
+  "name": "EmergenzFarmaco - Prontuario Urgenza & PS",
+  "description": "Guida clinica e prontuario rapido per farmaci in Medicina d'Urgenza e Pronto Soccorso: dosaggi, indicazioni da linee guida, aggiustamenti renali ed epatici, diluizioni, interazioni e warning di sicurezza.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
