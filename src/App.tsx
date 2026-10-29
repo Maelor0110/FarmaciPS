@@ -29,7 +29,6 @@ import {
   Timer,
   Flame,
   Zap,
-  Heart,
   Scale,
 } from 'lucide-react';
 
@@ -742,12 +741,10 @@ export default function App() {
 
           {/* Dedica ad Alessia */}
           <div className="pt-2 pb-1 text-center">
-            <div className="inline-flex items-center justify-center gap-2.5 px-6 py-2.5 rounded-full bg-linear-to-r from-rose-50 via-pink-50/70 to-rose-50 border border-rose-200/80 shadow-2xs">
-              <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
-              <span className="text-xs sm:text-sm font-medium text-slate-800">
-                Applicazione dedicata ad <span className="font-semibold text-rose-700">Alessia</span>
+            <div className="inline-flex items-center justify-center px-6 py-2 rounded-full bg-slate-100/80 border border-slate-200/80 shadow-2xs">
+              <span className="text-xs sm:text-sm font-medium text-slate-700">
+                Applicazione dedicata ad <span className="font-semibold text-slate-900">Alessia</span>
               </span>
-              <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
             </div>
           </div>
 
