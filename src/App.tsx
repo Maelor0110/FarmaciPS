@@ -29,6 +29,8 @@ import {
   Timer,
   Flame,
   Zap,
+  Heart,
+  Scale,
 } from 'lucide-react';
 
 const INITIAL_SEARCH_FILTERS: SearchFilterState = {
@@ -708,19 +710,60 @@ export default function App() {
         onClose={() => setIsShareOpen(false)}
       />
 
-      {/* Clinical Disclaimer Footer */}
-      <footer className="bg-white border-t border-slate-200 mt-12 py-6 text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-slate-900">EmergenzFarmaco</span>
-            <span aria-hidden="true">·</span>
-            <span>Prontuario di Farmacologia Clinica d'Urgenza & Pronto Soccorso</span>
+      {/* Clinical Disclaimer & Legal Notice Footer */}
+      <footer className="bg-white border-t border-slate-200 mt-14 pt-8 pb-10 text-xs text-slate-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          
+          {/* Legal Disclaimer Box */}
+          <div className="bg-slate-50 border border-slate-300/80 rounded-2xl p-4 sm:p-6 space-y-3.5 shadow-2xs">
+            <div className="flex items-center gap-2 text-slate-900 font-bold text-xs uppercase tracking-wider font-mono">
+              <Scale className="w-4 h-4 text-slate-700 shrink-0" />
+              <span>NOTA LEGALE & MEDICA · ESCLUSIONE TOTALE DI RESPONSABILITÀ (LEGAL DISCLAIMER)</span>
+            </div>
+
+            <div className="text-[11px] sm:text-xs leading-relaxed text-slate-600 space-y-2.5">
+              <p>
+                <strong>1. Finalità dello strumento:</strong> La presente applicazione web (<em>EmergenzFarmaco</em>) costituisce un ausilio tecnologico indipendente ad esclusivo scopo consultivo, informativo ed educativo, concepito per agevolare l'orientamento clinico rapido da parte di medici chirurghi e personale sanitario abilitato operanti nell'emergenza-urgenza.
+              </p>
+
+              <p>
+                <strong>2. Esclusione totale di responsabilità civile e penale:</strong> L'autore, lo sviluppatore, i collaboratori e chiunque abbia concorso alla stesura, pubblicazione o diffusione di questa applicazione <strong>declinano espressamente e incondizionatamente qualsiasi responsabilità</strong> civile, penale, disciplinare o deontologica per qualsivoglia danno diretto, indiretto, accidentale, consequenziale, morale o materiale a persone o cose (inclusi eventi avversi, lesioni personali, complicanze terapeutiche, peggioramenti prognostici o decesso) derivante direttamente o indirettamente dall'accesso, dall'uso, dall'affidamento o dall'impossibilità di utilizzo della presente applicazione, nonché da eventuali errori, refusi, omissioni, inesattezze o mancati aggiornamenti nei dati pubblicati.
+              </p>
+
+              <p>
+                <strong>3. Dovere inderogabile di verifica autonoma da parte del medico:</strong> La farmacoterapia d'urgenza è soggetta a continua evoluzione scientifica, eterogeneità di tolleranza e complessità del quadro clinico individuale. <strong>È onere e responsabilità inderogabile ed esclusiva del medico curante/prescrittore verificare personalmente e scrupolosamente ogni singola informazione</strong> (ivi compresi dosaggi, schemi di titolazione, diluizioni, compatibilità chimico-fisiche in Y, velocità di infusione in pompa siringa, aggiustamenti per funzionalità renale ed epatica, controindicazioni e alert per gravidanza/allattamento) mediante riscontro diretto con i <em>Riassunti delle Caratteristiche del Prodotto (RCP / SmPC ufficiali AIFA ed EMA)</em>, i prontuari e protocolli operativi aziendali della propria Azienda Sanitaria/Ospedaliera e le più recenti linee guida delle società scientifiche accreditate.
+              </p>
+
+              <p>
+                <strong>4. Autonomia della decisione clinica:</strong> Questa applicazione non sostituisce in alcun modo l'anamnesi, l'esame obiettivo, la diagnosi, il giudizio clinico critico e l'insindacabile discrezionalità del medico chirurgo, unico responsabile dell'atto medico e della prescrizione. I calcolatori integrati (Cockcroft-Gault, Child-Pugh, calcolo ml/h e schemi di reversal) sono forniti "<em>così come sono</em>" (as is) senza garanzia di assoluta accuratezza o idoneità per un caso specifico. L'utilizzo dell'applicazione comporta la piena, informata e irrevocabile accettazione di tutte le clausole della presente nota legale.
+              </p>
+            </div>
           </div>
 
-          <p className="text-center sm:text-right text-[11px] text-slate-400 max-w-xl">
-            Riservato a medici di urgenza, rianimatori e internisti. Dosaggi, schemi di titolazione e correzioni
-            adattati alle ultime linee guida ERC 2021/2025, ESC 2023/2024, Surviving Sepsis Campaign 2021/2024, KDIGO ed ESO.
-          </p>
+          {/* Dedica ad Alessia */}
+          <div className="pt-2 pb-1 text-center">
+            <div className="inline-flex items-center justify-center gap-2.5 px-6 py-2.5 rounded-full bg-linear-to-r from-rose-50 via-pink-50/70 to-rose-50 border border-rose-200/80 shadow-2xs">
+              <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
+              <span className="text-xs sm:text-sm font-medium text-slate-800">
+                Applicazione dedicata ad <span className="font-semibold text-rose-700">Alessia</span>
+              </span>
+              <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
+            </div>
+          </div>
+
+          {/* App Info Line */}
+          <div className="border-t border-slate-200 pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-400">
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-slate-700">EmergenzFarmaco</span>
+              <span aria-hidden="true">·</span>
+              <span>Farmacologia Clinica d'Emergenza & Pronto Soccorso</span>
+            </div>
+
+            <p className="text-center sm:text-right">
+              Linee guida di riferimento: ERC 2021/2025, ESC 2023/2024, Surviving Sepsis 2021/2024, KDIGO, ESO 2024, EAU 2024.
+            </p>
+          </div>
+
         </div>
       </footer>
     </div>
