@@ -232,21 +232,21 @@ export default function App() {
               <div className="flex items-center gap-2 shrink-0 flex-wrap">
                 <button
                   onClick={() => setActiveView('anticoag-reversal')}
-                  className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-lg transition-colors shadow-xs"
+                  className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-white bg-linear-to-r from-rose-600 to-rose-700 hover:from-rose-700 hover:to-rose-800 rounded-xl transition-all shadow-xs hover:shadow-sm cursor-pointer active:scale-95"
                 >
                   <ShieldAlert className="w-4 h-4 text-white" />
                   <span>Reverse Anticoagulanti</span>
                 </button>
                 <button
                   onClick={() => setIsCalculatorsOpen(true)}
-                  className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors shadow-2xs"
+                  className="flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200/90 rounded-xl transition-all shadow-2xs hover:shadow-xs cursor-pointer active:scale-95"
                 >
-                  <Calculator className="w-4 h-4 text-slate-600" />
+                  <Calculator className="w-4 h-4 text-rose-600" />
                   <span>Calcolatori Clinici</span>
                 </button>
                 <button
                   onClick={() => setActiveView('protocols')}
-                  className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors shadow-2xs"
+                  className="flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200/90 rounded-xl transition-all shadow-2xs hover:shadow-xs cursor-pointer active:scale-95"
                 >
                   <FileText className="w-4 h-4 text-slate-600" />
                   <span>Protocolli Rapidi</span>
@@ -255,26 +255,26 @@ export default function App() {
             </div>
 
             {/* High-Priority Clinical Banner: Protocollo Reversal */}
-            <div className="mb-5 p-3.5 sm:p-4 rounded-xl border border-rose-200 bg-linear-to-r from-rose-50 via-white to-rose-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
-              <div className="flex items-start sm:items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-rose-600 flex items-center justify-center text-white shrink-0 mt-0.5 sm:mt-0">
+            <div className="mb-6 p-4 sm:p-5 rounded-2xl border border-rose-200/90 bg-linear-to-r from-rose-50/90 via-white to-rose-50/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+              <div className="flex items-start sm:items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-linear-to-br from-rose-500 to-rose-600 flex items-center justify-center text-white shrink-0 shadow-xs">
                   <ShieldAlert className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2 text-[11px] font-mono font-bold text-rose-700">
                     <span>PROTOCOLLO CLINICO EMOSTATICO</span>
                     <span aria-hidden="true">·</span>
-                    <span className="text-slate-500 font-normal">EMORRAGIE ACUTE & MANOVRE INVASIVE</span>
+                    <span className="text-slate-500 font-normal">EMORRAGIE ACUTE & CHIRURGIA D'URGENZA</span>
                   </div>
-                  <p className="text-xs text-slate-700 mt-0.5 font-medium leading-snug">
-                    Linee di condotta e calcolo rapido dosi di reverse per <strong>DOAC (Dabigatran, Apixaban, Rivaroxaban, Edoxaban)</strong>, <strong>AVK (Warfarin)</strong> ed <strong>Eparine</strong> secondo cut-off plasmatici e gravità.
+                  <p className="text-xs text-slate-700 mt-0.5 font-medium leading-relaxed">
+                    Algoritmo decisionale e calcolo dosi di reverse per <strong>DOAC (Dabigatran, Apixaban, Rivaroxaban, Edoxaban)</strong>, <strong>AVK (Warfarin)</strong> ed <strong>Eparine</strong> secondo cut-off plasmatici e gravità.
                   </p>
                 </div>
               </div>
 
               <button
                 onClick={() => setActiveView('anticoag-reversal')}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-rose-700 hover:text-rose-800 bg-white hover:bg-rose-100/50 border border-rose-300 rounded-lg transition-colors shadow-2xs whitespace-nowrap shrink-0 self-start sm:self-center"
+                className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-rose-700 hover:text-white bg-white hover:bg-rose-600 border border-rose-300 rounded-xl transition-all shadow-2xs hover:shadow-xs whitespace-nowrap shrink-0 self-start sm:self-center cursor-pointer active:scale-95"
               >
                 <span>Apri Protocollo & Calcolatore</span>
                 <span aria-hidden="true">&rarr;</span>
@@ -305,24 +305,24 @@ export default function App() {
                 )}
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3">
                 {/* 1. VERTIGINI */}
                 <button
                   onClick={() => quickFilterByIndication('Vertigini & Sindromi Vestibolari')}
-                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                  className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md ${
                     searchFilters.indication === 'Vertigini & Sindromi Vestibolari'
-                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
-                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                      ? 'bg-rose-50/90 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/90 border-slate-200/90 hover:border-slate-300 shadow-2xs'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="w-7 h-7 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="w-8 h-8 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center shadow-2xs">
                       <Compass className="w-4 h-4" />
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-400">HINTS</span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">HINTS</span>
                   </div>
-                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Vertigini & Vestibolare</h2>
-                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight group-hover:text-rose-600 transition-colors">Vertigini & Vestibolare</h2>
+                  <p className="text-[11px] text-slate-500 mt-1 line-clamp-1">
                     Levosulpiride, Torecan, Dimenidrinato
                   </p>
                 </button>
@@ -330,20 +330,20 @@ export default function App() {
                 {/* 2. ATTACCHI DI PANICO ED ANSIA */}
                 <button
                   onClick={() => quickFilterByIndication('Ansia Acuta & Attacchi di Panico')}
-                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                  className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md ${
                     searchFilters.indication === 'Ansia Acuta & Attacchi di Panico'
-                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
-                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                      ? 'bg-rose-50/90 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/90 border-slate-200/90 hover:border-slate-300 shadow-2xs'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center shadow-2xs">
                       <Smile className="w-4 h-4" />
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-400">BDZ / H1</span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">BDZ / H1</span>
                   </div>
-                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Ansia & Panico</h2>
-                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight group-hover:text-rose-600 transition-colors">Ansia & Panico</h2>
+                  <p className="text-[11px] text-slate-500 mt-1 line-clamp-1">
                     Alprazolam, Tavor, Diazepam, Atarax
                   </p>
                 </button>
@@ -351,20 +351,20 @@ export default function App() {
                 {/* 3. BPCO RIACUTIZZATA */}
                 <button
                   onClick={() => quickFilterByIndication('BPCO Riacutizzata')}
-                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                  className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md ${
                     searchFilters.indication === 'BPCO Riacutizzata'
-                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
-                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                      ? 'bg-rose-50/90 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/90 border-slate-200/90 hover:border-slate-300 shadow-2xs'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="w-7 h-7 rounded-lg bg-sky-50 text-sky-700 flex items-center justify-center">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="w-8 h-8 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center shadow-2xs">
                       <Wind className="w-4 h-4" />
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-400">GOLD</span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">GOLD</span>
                   </div>
-                  <h2 className="text-xs font-bold text-slate-900 leading-tight">BPCO Riacutizzata</h2>
-                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight group-hover:text-rose-600 transition-colors">BPCO Riacutizzata</h2>
+                  <p className="text-[11px] text-slate-500 mt-1 line-clamp-1">
                     Breva, Urbason, Atem, Tefamin
                   </p>
                 </button>
@@ -372,20 +372,20 @@ export default function App() {
                 {/* 4. ASMA ACUTO */}
                 <button
                   onClick={() => quickFilterByIndication('Asma Acuto')}
-                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                  className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md ${
                     searchFilters.indication === 'Asma Acuto'
-                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
-                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                      ? 'bg-rose-50/90 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/90 border-slate-200/90 hover:border-slate-300 shadow-2xs'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="w-8 h-8 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shadow-2xs">
                       <HeartPulse className="w-4 h-4" />
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-400">GINA</span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">GINA</span>
                   </div>
-                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Asma Acuto</h2>
-                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight group-hover:text-rose-600 transition-colors">Asma Acuto</h2>
+                  <p className="text-[11px] text-slate-500 mt-1 line-clamp-1">
                     Salbutamolo, Mg Solfato, Cortisonici
                   </p>
                 </button>
@@ -393,20 +393,20 @@ export default function App() {
                 {/* 5. REAZIONI ALLERGICHE & ANAFILASSI */}
                 <button
                   onClick={() => quickFilterByIndication('Reazioni Allergiche & Anafilassi')}
-                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                  className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md ${
                     searchFilters.indication === 'Reazioni Allergiche & Anafilassi'
-                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
-                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                      ? 'bg-rose-50/90 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/90 border-slate-200/90 hover:border-slate-300 shadow-2xs'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="w-7 h-7 rounded-lg bg-rose-50 text-rose-700 flex items-center justify-center">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="w-8 h-8 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center shadow-2xs">
                       <ShieldCheck className="w-4 h-4" />
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-400">EAACI</span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">EAACI</span>
                   </div>
-                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Reazioni Allergiche</h2>
-                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight group-hover:text-rose-600 transition-colors">Reazioni Allergiche</h2>
+                  <p className="text-[11px] text-slate-500 mt-1 line-clamp-1">
                     Adrenalina IM, Trimeton, Soldesam
                   </p>
                 </button>
@@ -414,20 +414,20 @@ export default function App() {
                 {/* 6. COLICA RENALE & ADDOME ACUTO */}
                 <button
                   onClick={() => quickFilterByIndication('Colica Renale & Addome Acuto')}
-                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                  className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md ${
                     searchFilters.indication === 'Colica Renale & Addome Acuto'
-                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
-                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                      ? 'bg-rose-50/90 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/90 border-slate-200/90 hover:border-slate-300 shadow-2xs'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="w-7 h-7 rounded-lg bg-orange-50 text-orange-700 flex items-center justify-center">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="w-8 h-8 rounded-xl bg-orange-50 text-orange-700 flex items-center justify-center shadow-2xs">
                       <Activity className="w-4 h-4" />
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-400">EAU / WSES</span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">EAU / WSES</span>
                   </div>
-                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Colica Renale & Addome</h2>
-                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight group-hover:text-rose-600 transition-colors">Colica Renale & Addome</h2>
+                  <p className="text-[11px] text-slate-500 mt-1 line-clamp-1">
                     Artrosilene, Buscopan, Toradol, Morfina
                   </p>
                 </button>
@@ -435,20 +435,20 @@ export default function App() {
                 {/* 7. EMERGENZE METABOLICHE & DISIONIE */}
                 <button
                   onClick={() => quickFilterByIndication('Emergenze Metaboliche & Disionie')}
-                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                  className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md ${
                     searchFilters.indication === 'Emergenze Metaboliche & Disionie'
-                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
-                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                      ? 'bg-rose-50/90 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/90 border-slate-200/90 hover:border-slate-300 shadow-2xs'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="w-8 h-8 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shadow-2xs">
                       <Flame className="w-4 h-4" />
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-400">DISIONIE</span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">DISIONIE</span>
                   </div>
-                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Emergenze Metaboliche</h2>
-                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight group-hover:text-rose-600 transition-colors">Emergenze Metaboliche</h2>
+                  <p className="text-[11px] text-slate-500 mt-1 line-clamp-1">
                     Calcio Gluconato, Insulina, Sol. 3%, Bicarb.
                   </p>
                 </button>
@@ -456,20 +456,20 @@ export default function App() {
                 {/* 8. AGITAZIONE PSICOMOTORIA & DELIRIUM */}
                 <button
                   onClick={() => quickFilterByIndication('Agitazione Psicomotoria & Delirium')}
-                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                  className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md ${
                     searchFilters.indication === 'Agitazione Psicomotoria & Delirium'
-                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
-                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                      ? 'bg-rose-50/90 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/90 border-slate-200/90 hover:border-slate-300 shadow-2xs'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="w-7 h-7 rounded-lg bg-purple-50 text-purple-700 flex items-center justify-center">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="w-8 h-8 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center shadow-2xs">
                       <Brain className="w-4 h-4" />
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-400">OBI / PS</span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">OBI / PS</span>
                   </div>
-                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Agitazione & Delirium</h2>
-                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight group-hover:text-rose-600 transition-colors">Agitazione & Delirium</h2>
+                  <p className="text-[11px] text-slate-500 mt-1 line-clamp-1">
                     Olanzapina IM, Entumin, Serenase, Tavor
                   </p>
                 </button>
@@ -477,20 +477,20 @@ export default function App() {
                 {/* 9. ICTUS ISCHEMICO ACUTO & FIBRINOLISI */}
                 <button
                   onClick={() => quickFilterByIndication('Ictus Ischemico Acuto & Fibrinolisi')}
-                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                  className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md ${
                     searchFilters.indication === 'Ictus Ischemico Acuto & Fibrinolisi'
-                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
-                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                      ? 'bg-rose-50/90 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/90 border-slate-200/90 hover:border-slate-300 shadow-2xs'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="w-7 h-7 rounded-lg bg-red-50 text-red-700 flex items-center justify-center">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="w-8 h-8 rounded-xl bg-red-50 text-red-700 flex items-center justify-center shadow-2xs">
                       <Timer className="w-4 h-4" />
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-400">ESO 2024</span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">ESO 2024</span>
                   </div>
-                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Ictus & Fibrinolisi</h2>
-                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight group-hover:text-rose-600 transition-colors">Ictus & Fibrinolisi</h2>
+                  <p className="text-[11px] text-slate-500 mt-1 line-clamp-1">
                     Tenecteplase, Alteplase, Labetalolo, Urapidil
                   </p>
                 </button>

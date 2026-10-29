@@ -28,7 +28,7 @@ export const DrugCard: React.FC<DrugCardProps> = ({
       : 'Pronto Soccorso & Reparto';
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 hover:border-slate-300 transition-all p-5 flex flex-col justify-between shadow-xs">
+    <div className="bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 transition-all duration-200 p-5 flex flex-col justify-between shadow-xs hover:shadow-md hover:-translate-y-0.5 group">
       <div>
         {/* Unboxed Metadata (Zero-pill discipline) */}
         <div className="flex flex-wrap items-center gap-1.5 text-xs text-slate-500 mb-2 font-mono">
@@ -146,10 +146,10 @@ export const DrugCard: React.FC<DrugCardProps> = ({
       <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
         <button
           onClick={() => onToggleInteractionsCart(drug)}
-          className={`flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-lg transition-colors ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer shadow-2xs ${
             isInInteractionsCart
-              ? 'bg-amber-100 text-amber-800 border border-amber-300'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200'
+              ? 'bg-amber-100 text-amber-800 border border-amber-300 font-bold'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200/90'
           }`}
           title={
             isInInteractionsCart
@@ -172,7 +172,7 @@ export const DrugCard: React.FC<DrugCardProps> = ({
 
         <button
           onClick={() => onSelect(drug)}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-rose-700 hover:text-white bg-rose-50 hover:bg-rose-600 rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-rose-500"
+          className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-rose-700 hover:text-white bg-rose-50 hover:bg-rose-600 rounded-xl transition-all cursor-pointer shadow-2xs active:scale-95"
         >
           <span>Scheda Clinica</span>
           <ArrowRight className="w-3.5 h-3.5" />

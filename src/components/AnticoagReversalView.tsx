@@ -56,14 +56,17 @@ export const AnticoagReversalView: React.FC<AnticoagReversalViewProps> = ({
   const [scenario, setScenario] = useState<ClinicalScenario>('bleeding');
   const [anticoagulant, setAnticoagulant] = useState<AnticoagulantType>('warfarin_aceno');
   const [weightKg, setWeightKg] = useState<number>(75);
+  const [weightStr, setWeightStr] = useState<string>('75');
   const [bleedingSeverity, setBleedingSeverity] = useState<BleedingSeverity>('major_ich');
   const [urgencyTiming, setUrgencyTiming] = useState<SurgeryUrgency>('emergency');
   const [procedureRisk, setProcedureRisk] = useState<ProcedureBleedingRisk>('high');
   const [inrValue, setInrValue] = useState<number>(4.2);
+  const [inrStr, setInrStr] = useState<string>('4.2');
   const [doacLevelNgMl, setDoacLevelNgMl] = useState<
     'unknown' | 'less_30' | 'between_30_50' | 'between_50_100' | 'more_50'
   >('more_50');
   const [hoursSinceLastDose, setHoursSinceLastDose] = useState<number>(3);
+  const [hoursStr, setHoursStr] = useState<string>('3');
   const [recentIngestionWithin4Hours, setRecentIngestionWithin4Hours] = useState<boolean>(false);
   const [coAntiplateletOrThrombocytopenia, setCoAntiplateletOrThrombocytopenia] = useState<boolean>(false);
   const [isTraumaWithin3Hours, setIsTraumaWithin3Hours] = useState<boolean>(false);
@@ -272,21 +275,45 @@ export const AnticoagReversalView: React.FC<AnticoagReversalViewProps> = ({
             </div>
 
             {/* Weight Input */}
-            <div>
-              <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1">
+            <div className="p-3 rounded-xl bg-slate-50/70 border border-slate-200/80">
+              <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1.5">
                 <span>Peso Corporeo Reale del Paziente:</span>
-                <span className="font-mono text-rose-600 font-bold">{weightKg} kg</span>
+                <div className="flex items-center gap-1.5">
+                  <input
+                    type="text"
+                    inputMode="decimal"
+                    value={weightStr}
+                    onFocus={(e) => e.target.select()}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (val === '' || /^\d*([.,]\d*)?$/.test(val)) {
+                        setWeightStr(val);
+                        const n = parseFloat(val.replace(',', '.'));
+                        if (!isNaN(n) && n > 0) setWeightKg(Math.round(n));
+                      }
+                    }}
+                    placeholder="es. 75"
+                    className="w-16 px-2 py-1 text-xs text-right font-mono font-bold text-rose-700 bg-white border border-rose-300 rounded-lg focus:ring-2 focus:ring-rose-500/20 outline-hidden shadow-2xs"
+                  />
+                  <span className="font-mono text-slate-500 text-xs">kg</span>
+                </div>
               </div>
+
+
               <input
                 type="range"
                 min="40"
                 max="140"
                 step="1"
                 value={weightKg}
-                onChange={(e) => setWeightKg(Number(e.target.value))}
+                onChange={(e) => {
+                  const val = Number(e.target.value);
+                  setWeightKg(val);
+                  setWeightStr(String(val));
+                }}
                 className="w-full accent-rose-600 cursor-pointer"
               />
-              <div className="flex justify-between text-[10px] text-slate-400 font-mono">
+              <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-0.5">
                 <span>40 kg</span>
                 <span>70 kg (standard)</span>
                 <span>140 kg</span>
@@ -416,52 +443,81 @@ export const AnticoagReversalView: React.FC<AnticoagReversalViewProps> = ({
             {/* Laboratory & Time Values */}
             <div className="pt-2 border-t border-slate-100 space-y-3">
               {anticoagulant === 'warfarin_aceno' && (
-                <div>
-                  <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1">
+                <div className="p-3 rounded-xl bg-slate-50/70 border border-slate-200/80">
+                  <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1.5">
                     <span>Valore INR Attuale:</span>
-                    <span className="font-mono text-rose-600 font-bold">{inrValue.toFixed(1)}</span>
+                    <div className="flex items-center gap-1.5">
+                      <input
+                        type="text"
+                        inputMode="decimal"
+                        value={inrStr}
+                        onFocus={(e) => e.target.select()}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          if (val === '' || /^\d*([.,]\d*)?$/.test(val)) {
+                            setInrStr(val);
+                            const n = parseFloat(val.replace(',', '.'));
+                            if (!isNaN(n) && n >= 1) setInrValue(Math.round(n * 10) / 10);
+                          }
+                        }}
+                        placeholder="es. 4.2"
+                        className="w-16 px-2 py-1 text-xs text-right font-mono font-bold text-rose-700 bg-white border border-rose-300 rounded-lg focus:ring-2 focus:ring-rose-500/20 outline-hidden shadow-2xs"
+                      />
+                    </div>
                   </div>
                   <div className="grid grid-cols-4 gap-1.5 mb-2">
                     <button
                       type="button"
-                      onClick={() => setInrValue(2.8)}
-                      className={`py-1 text-xs font-mono rounded border ${
+                      onClick={() => {
+                        setInrValue(2.8);
+                        setInrStr('2.8');
+                      }}
+                      className={`py-1 text-xs font-mono rounded border transition-colors ${
                         inrValue >= 2.0 && inrValue < 4.0
                           ? 'bg-rose-50 border-rose-300 text-rose-800 font-bold'
-                          : 'bg-slate-50 border-slate-200 text-slate-600'
+                          : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-600'
                       }`}
                     >
                       INR 2.0-3.9
                     </button>
                     <button
                       type="button"
-                      onClick={() => setInrValue(4.8)}
-                      className={`py-1 text-xs font-mono rounded border ${
+                      onClick={() => {
+                        setInrValue(4.8);
+                        setInrStr('4.8');
+                      }}
+                      className={`py-1 text-xs font-mono rounded border transition-colors ${
                         inrValue >= 4.0 && inrValue <= 6.0
                           ? 'bg-rose-50 border-rose-300 text-rose-800 font-bold'
-                          : 'bg-slate-50 border-slate-200 text-slate-600'
+                          : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-600'
                       }`}
                     >
                       INR 4.0-6.0
                     </button>
                     <button
                       type="button"
-                      onClick={() => setInrValue(7.2)}
-                      className={`py-1 text-xs font-mono rounded border ${
+                      onClick={() => {
+                        setInrValue(7.2);
+                        setInrStr('7.2');
+                      }}
+                      className={`py-1 text-xs font-mono rounded border transition-colors ${
                         inrValue > 6.0 && inrValue <= 10.0
                           ? 'bg-rose-50 border-rose-300 text-rose-800 font-bold'
-                          : 'bg-slate-50 border-slate-200 text-slate-600'
+                          : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-600'
                       }`}
                     >
                       INR &gt; 6.0
                     </button>
                     <button
                       type="button"
-                      onClick={() => setInrValue(11.5)}
-                      className={`py-1 text-xs font-mono rounded border ${
+                      onClick={() => {
+                        setInrValue(11.5);
+                        setInrStr('11.5');
+                      }}
+                      className={`py-1 text-xs font-mono rounded border transition-colors ${
                         inrValue > 10.0
                           ? 'bg-rose-50 border-rose-300 text-rose-800 font-bold'
-                          : 'bg-slate-50 border-slate-200 text-slate-600'
+                          : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-600'
                       }`}
                     >
                       INR &gt; 10
@@ -473,8 +529,12 @@ export const AnticoagReversalView: React.FC<AnticoagReversalViewProps> = ({
                     max="14.0"
                     step="0.1"
                     value={inrValue}
-                    onChange={(e) => setInrValue(Number(e.target.value))}
-                    className="w-full accent-rose-600"
+                    onChange={(e) => {
+                      const val = Number(e.target.value);
+                      setInrValue(val);
+                      setInrStr(val.toFixed(1));
+                    }}
+                    className="w-full accent-rose-600 cursor-pointer"
                   />
                 </div>
               )}
@@ -490,7 +550,7 @@ export const AnticoagReversalView: React.FC<AnticoagReversalViewProps> = ({
                   <select
                     value={doacLevelNgMl}
                     onChange={(e) => setDoacLevelNgMl(e.target.value as any)}
-                    className="w-full text-xs font-medium bg-white border border-slate-300 rounded-lg px-3 py-2 text-slate-900"
+                    className="w-full text-xs font-medium bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 outline-hidden shadow-2xs"
                   >
                     <option value="more_50">&gt; 50 ng/mL (Livello non sicuro: indicata reverse in urgenza/emergenza)</option>
                     <option value="between_50_100">50 - 100 ng/mL (Valutare rinvio intervento 20-24h se 6-24h)</option>
@@ -502,10 +562,28 @@ export const AnticoagReversalView: React.FC<AnticoagReversalViewProps> = ({
               )}
 
               {(anticoagulant === 'enf' || anticoagulant === 'ebpm') && (
-                <div>
-                  <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1">
+                <div className="p-3 rounded-xl bg-slate-50/70 border border-slate-200/80">
+                  <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1.5">
                     <span>Tempo Trascorso dall'Ultima Somministrazione:</span>
-                    <span className="font-mono text-rose-600 font-bold">{hoursSinceLastDose} ore</span>
+                    <div className="flex items-center gap-1.5">
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        value={hoursStr}
+                        onFocus={(e) => e.target.select()}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          if (val === '' || /^\d*$/.test(val)) {
+                            setHoursStr(val);
+                            const n = parseInt(val, 10);
+                            if (!isNaN(n) && n >= 0) setHoursSinceLastDose(n);
+                          }
+                        }}
+                        placeholder="es. 3"
+                        className="w-16 px-2 py-1 text-xs text-right font-mono font-bold text-rose-700 bg-white border border-rose-300 rounded-lg focus:ring-2 focus:ring-rose-500/20 outline-hidden shadow-2xs"
+                      />
+                      <span className="font-mono text-slate-500 text-xs">ore</span>
+                    </div>
                   </div>
                   <input
                     type="range"
@@ -513,10 +591,14 @@ export const AnticoagReversalView: React.FC<AnticoagReversalViewProps> = ({
                     max="24"
                     step="1"
                     value={hoursSinceLastDose}
-                    onChange={(e) => setHoursSinceLastDose(Number(e.target.value))}
-                    className="w-full accent-rose-600"
+                    onChange={(e) => {
+                      const val = Number(e.target.value);
+                      setHoursSinceLastDose(val);
+                      setHoursStr(String(val));
+                    }}
+                    className="w-full accent-rose-600 cursor-pointer"
                   />
-                  <div className="flex justify-between text-[10px] text-slate-400 font-mono">
+                  <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-0.5">
                     <span>1 ora</span>
                     <span>3h (cut-off ENF)</span>
                     <span>8h (cut-off EBPM)</span>
