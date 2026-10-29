@@ -976,7 +976,7 @@ export const ADDITIONAL_EMERGENCY_DRUGS: Omit<EmergencyDrug, 'pregnancy'>[] = [
     brandNames: ['Toradol', 'Lixidol'],
     drugClass: 'FANS & Analgesici non oppioidi',
     clinicalSetting: 'entrambi',
-    emergencyIndications: ['Dolore Acuto & Analgesia'],
+    emergencyIndications: ['Colica Renale & Addome Acuto', 'Dolore Acuto & Analgesia'],
     quickSummary: 'FANS ad elevatissima potenza analgesica per via parenterale. Trattamento di prima linea comprovato per la colica renale/ureterale acuta e dolore muscolo-scheletrico severo privo di debolezza emodinamica o respiratoria.',
     mechanismOfAction: 'Potente inibizione non selettiva delle ciclossigenasi COX-1 e COX-2 con soppressione della sintesi delle prostaglandine periferiche. Nella colica renale riduce la pressione intracavitica pelvi-ureterale e l\'edema ureterale riducendo il filtrato glomerulare mediato da prostaglandine.',
     dosages: [
@@ -1386,7 +1386,7 @@ export const ADDITIONAL_EMERGENCY_DRUGS: Omit<EmergencyDrug, 'pregnancy'>[] = [
     brandNames: ['Sodio Cloruro 3% Sacche/Flaconi'],
     drugClass: 'Soluzioni osmotiche & Cristalloidi',
     clinicalSetting: 'entrambi',
-    emergencyIndications: ['Convulsioni & Neurologia d\'Urgenza'],
+    emergencyIndications: ['Emergenze Metaboliche & Disionie', 'Convulsioni & Neurologia d\'Urgenza'],
     quickSummary: 'Soluzione osmotica ipertonica (513 mEq/L di Na+ e Cl-, osmolarità 1026 mOsm/L). Trattamento salvavita d\'emergenza per l\'edema cerebrale acuto con ipertensione endocranica / erniazione e per l\'iponatriemia severa acuta sintomatica con coma o convulsioni.',
     mechanismOfAction: 'Crea un forte gradiente osmotico transendoteliale richiamando rapidamente acqua libera dal compartimento parenchimale cerebrale edematoso verso il torrente circolatorio intravascolare, abbattendo la pressione intracranica (ICP) e aumentando la pressione di perfusione cerebrale (CPP). Nel trattamento dell\'iponatriemia acuta ripristina rapidamente la natriemia prevenendo l\'edema cellulare cerebrale.',
     dosages: [

@@ -1,16 +1,18 @@
 import React from 'react';
-import { HeartPulse, Calculator, ShieldAlert, FileText } from 'lucide-react';
+import { HeartPulse, Calculator, ShieldAlert, FileText, Share2 } from 'lucide-react';
 
 interface HeaderProps {
   activeView: 'drugs' | 'calculators' | 'protocols' | 'interactions' | 'anticoag-reversal';
   onNavigate: (view: 'drugs' | 'calculators' | 'protocols' | 'interactions' | 'anticoag-reversal') => void;
   selectedDrugsCount: number;
+  onOpenShare: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   activeView,
   onNavigate,
   selectedDrugsCount,
+  onOpenShare,
 }) => {
   return (
     <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-sm border-b border-slate-200">
@@ -98,18 +100,28 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </nav>
 
-          {/* Zone 3: Quick Action / Mobile helper */}
-          <div className="flex items-center gap-2.5 shrink-0">
+          {/* Zone 3: Quick Action / Mobile helper & Share */}
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={onOpenShare}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
+              title="Condividi indirizzo web dell'app"
+            >
+              <Share2 className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Condividi App</span>
+              <span className="sm:hidden">Condividi</span>
+            </button>
+
             <button
               onClick={() => onNavigate('anticoag-reversal')}
-              className="md:hidden flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-rose-600 rounded-lg hover:bg-rose-700 transition-colors"
+              className="md:hidden flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-bold text-white bg-rose-600 rounded-lg hover:bg-rose-700 transition-colors"
             >
               <ShieldAlert className="w-3.5 h-3.5" />
               <span>Reverse</span>
             </button>
-            <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-lg text-xs font-semibold text-slate-700">
+            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-lg text-xs font-semibold text-slate-700">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>PS & Medicina d'Urgenza</span>
+              <span>PS & Urgenza</span>
             </div>
           </div>
         </div>

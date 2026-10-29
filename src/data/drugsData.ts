@@ -4,6 +4,7 @@ import { ADDITIONAL_EMERGENCY_DRUGS } from './moreDrugs';
 import { ADDITIONAL_EMERGENCY_DRUGS_BATCH_2 } from './moreDrugsBatch2';
 import { ADDITIONAL_EMERGENCY_DRUGS_BATCH_3 } from './moreDrugsBatch3';
 import { ADDITIONAL_EMERGENCY_DRUGS_BATCH_4 } from './moreDrugsBatch4';
+import { ADDITIONAL_EMERGENCY_DRUGS_BATCH_5 } from './moreDrugsBatch5';
 
 const INITIAL_EMERGENCY_DRUGS: Omit<EmergencyDrug, 'pregnancy'>[] = [
   {
@@ -2057,9 +2058,9 @@ const INITIAL_EMERGENCY_DRUGS: Omit<EmergencyDrug, 'pregnancy'>[] = [
     id: 'alteplase',
     name: 'Alteplase (rt-PA)',
     brandNames: ['Actilyse'],
-    drugClass: 'Antiaggreganti & Anticoagulanti',
+    drugClass: 'Fibrinolitici',
     clinicalSetting: 'ps',
-    emergencyIndications: ['Tromboembolismo & SCA', 'Convulsioni & Neurologia d\'Urgenza'],
+    emergencyIndications: ['Ictus Ischemico Acuto & Fibrinolisi', 'Tromboembolismo & SCA', 'Convulsioni & Neurologia d\'Urgenza'],
     quickSummary: 'Attivatore ricombinante del plasminogeno tissutale (rt-PA). Indicato nella trombolisi sistemica dell\'Ictus Ischemico Acuto (entro 4.5 ore), dell\'Embolia Polmonare Massiva instabile e dello STEMI se PCI non disponibile entro 120 minuti.',
     mechanismOfAction: 'Si lega alla fibrina nel trombo convertendo selettivamente il plasminogeno legato in plasmina, che degrada la rete di fibrina dissolvendo il coagulo vascolare occludente.',
     dosages: [
@@ -2208,7 +2209,7 @@ const INITIAL_EMERGENCY_DRUGS: Omit<EmergencyDrug, 'pregnancy'>[] = [
     brandNames: ['Sodio Bicarbonato 8.4% Fiale/Flaconi'],
     drugClass: 'Soluzioni osmotiche & Cristalloidi',
     clinicalSetting: 'entrambi',
-    emergencyIndications: ['Arresto Cardiaco / ACLS', 'Intossicazioni & Antidoti'],
+    emergencyIndications: ['Emergenze Metaboliche & Disionie', 'Arresto Cardiaco / ACLS', 'Intossicazioni & Antidoti'],
     quickSummary: 'Soluzione alcalinizzante molare (1 mEq/ml). Indicata nell\'iperkaliemia acuta, nell\'intossicazione da Antidepressivi Triciclici (TCA) con allargamento del QRS e nell\'acidosi metabolica severa con pH < 7.10.',
     mechanismOfAction: 'Aumenta il pH ematico inducendo shift intracellulare di potassio in scambio con ioni idrogeno. Nelle intossicazioni da farmaci bloccanti i canali del sodio (TCA), l\'alcalinizzazione e l\'elevato carico di sodio distaccano il farmaco dal canale, restringendo il complesso QRS.',
     dosages: [
@@ -2696,6 +2697,7 @@ const RAW_EMERGENCY_DRUGS: Omit<EmergencyDrug, 'pregnancy'>[] = [
   ...ADDITIONAL_EMERGENCY_DRUGS_BATCH_2,
   ...ADDITIONAL_EMERGENCY_DRUGS_BATCH_3,
   ...ADDITIONAL_EMERGENCY_DRUGS_BATCH_4,
+  ...ADDITIONAL_EMERGENCY_DRUGS_BATCH_5,
 ];
 
 export const EMERGENCY_DRUGS: EmergencyDrug[] = RAW_EMERGENCY_DRUGS.map((drug) => ({

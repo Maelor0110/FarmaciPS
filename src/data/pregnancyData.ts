@@ -650,6 +650,82 @@ export const PREGNANCY_DATA: Record<string, PregnancySafety> = {
     clinicalSummary: 'COMPATIBILE (Cat. B): Inibitore di pompa protonica sicuro in gravidanza per emorragia digestiva superiore e profilassi dell\'aspirazione acida (sindrome di Mendelson).',
     lactation: 'Compatibile con l\'allattamento al seno.',
     trimesterNotes: 'Sicuro in tutti i trimestri.'
+  },
+
+  // --- NUOVI FARMACI PRONTO SOCCORSO (BATCH 5) ---
+  'tenecteplase': {
+    fdaCategory: 'C',
+    riskLevel: 'caution',
+    clinicalSummary: 'CAUTELA / SALVAVITA: Non supera la placenta in quantità rilevanti dato l\'alto peso molecolare (~65 kDa), ma sussiste rischio di sanguinamento utero-placentare e distacco di placenta. Riservato all\'Ictus Ischemico Acuto o STEMI materno a rischio vitale quando non vi siano opzioni endovascolari tempestive.',
+    lactation: 'Sospendere temporaneamente l\'allattamento per 24 ore dopo il bolo.',
+    trimesterNotes: 'Solo per emergenze neurologiche/cardiologiche a rischio di morte materna.'
+  },
+  'ketoprofene': {
+    fdaCategory: 'D',
+    riskLevel: 'contraindicated',
+    clinicalSummary: 'CONTROINDICATO NEL 3° TRIMESTRE (Cat. D): Come tutti i FANS sistemici, induce chiusura precoce del dotto arterioso di Botallo con grave ipertensione polmonare persistente neonatale e disfunzione renale fetale con oligoidramnios. Nel 1° e 2° trimestre da evitare salvo assoluta necessità; nella colica renale in gravidanza preferire Paracetamolo EV o Oppioidi.',
+    lactation: 'Compatibile a dosi singole.',
+    trimesterNotes: 'Controindicato nel terzo trimestre. Cautela nel primo e secondo trimestre.',
+    safeAlternatives: 'Paracetamolo EV 1 g; Morfina EV/SC a dosi titolate in colica renale refrattaria.'
+  },
+  'butilscopolamina': {
+    fdaCategory: 'C',
+    riskLevel: 'caution',
+    clinicalSummary: 'CAUTELA (Cat. C): Struttura ad ammonio quaternario che ne riduce il passaggio transplacentare. Non teratogeno nell\'animale; utilizzabile per coliche biliari acute o spasmi viscerali intensi refrattari a paracetamolo.',
+    lactation: 'Compatibile con cautela; può ridurre lievemente la secrezione lattea.',
+    trimesterNotes: 'Utilizzabile in acuto in caso di colica viscerale dolorosa.'
+  },
+  'olanzapina': {
+    fdaCategory: 'C',
+    riskLevel: 'caution',
+    clinicalSummary: 'CAUTELA: Antipsicotico atipico di seconda generazione. Attraversa la placenta senza significativo incremento di malformazioni anatomiche maggiori; l\'esposizione nel 3° trimestre richiede monitoraggio neonatale per sintomi extrapiramidali transitori o sedazione. Nell\'agitazione psicomotoria acuta severa i benefici del controllo rapido superano i rischi.',
+    lactation: 'Passa nel latte materno; monitorare la vigilanza del neonato.',
+    trimesterNotes: 'Monitorare il neonato nelle prime 48 ore di vita.'
+  },
+  'clotiapina': {
+    fdaCategory: 'C',
+    riskLevel: 'high_risk',
+    clinicalSummary: 'ALTO RISCHIO: Neurolettico dibenzotiazepinico ad elevata potenza sedativa. Dati in gravidanza scarsi; rischio di ipotensione materna acuta con ridotta perfusione placentare, depressione neonatale ed EPS. Riservato ad acuzie comportamentali refrattarie in PS.',
+    lactation: 'Controindicato durante l\'allattamento.',
+    trimesterNotes: 'Preferire Aloperidolo a basse dosi o Lorazepam sublinguale se possibile.',
+    safeAlternatives: 'Aloperidolo a basse dosi (1-2 mg) o Lorazepam.'
+  },
+  'calcio-gluconato': {
+    fdaCategory: 'C',
+    riskLevel: 'safe',
+    clinicalSummary: 'COMPATIBILE & SALVAVITA (Cat. C): Catione fisiologico essenziale. Farmaco di prima linea per la cardioprotezione nell\'iperkaliemia grave con alterazioni ECG, per l\'ipocalcemia sintomatica e come ANTIDOTO SPECIFICO fondamentale per la tossicità da Solfato di Magnesio nella preeclampsia grave ed eclampsia.',
+    lactation: 'Completamente compatibile con l\'allattamento al seno.',
+    trimesterNotes: 'Sicuro ed indispensabile in tutti i trimestri nelle emergenze metaboliche o da intossicazione da magnesio.'
+  },
+  'octreotide': {
+    fdaCategory: 'B',
+    riskLevel: 'safe',
+    clinicalSummary: 'COMPATIBILE & FARMACO DI PRIMA SCELTA IN GRAVIDANZA (Cat. B): Analogo della somatostatina. Nelle emorragie da varici esofagee nella gestante cirrotica è nettamente preferibile alla Terlipressina, poiché non induce vasocostrizione miometriale né stimola contrazioni uterine che causano distacco intempestivo o parto prematuro.',
+    lactation: 'Sospendere l\'allattamento durante l\'infusione continua acuta.',
+    trimesterNotes: 'Vasoattivo di scelta per varici esofagee sanguinanti in ogni trimestre.',
+    safeAlternatives: 'Octreotide è l\'alternativa sicura d\'elezione alla terlipressina.'
+  },
+  'idrossocobalamina': {
+    fdaCategory: 'C',
+    riskLevel: 'safe',
+    clinicalSummary: 'ANTIDOTO SALVAVITA TEMPO-DIPENDENTE (Cat. C): L\'intossicazione acuta da fumi d\'incendio e cianuro provoca arresto della respirazione cellulare materna e fetale rapidamente letale. L\'idrossocobalamina lega il cianuro trasformandosi in Vitamina B12 senza causare metaemoglobinemia: somministrazione prioritaria e immediata in qualsiasi epoca gestazionale.',
+    lactation: 'Compatibile in emergenza vitale.',
+    trimesterNotes: 'Nessuna controindicazione o esitazione in emergenza vitale.'
+  },
+  'prasugrel': {
+    fdaCategory: 'B',
+    riskLevel: 'caution',
+    clinicalSummary: 'CAUTELA: Inibitore P2Y12 irreversibile potente. Dati clinici in gravidanza limitati rispetto a Clopidogrel ed ASA. Nelle sindromi coronariche acute con angioplastica primaria ad alto rischio trombotico, utilizzare con monitoraggio emostatico e sospendere prima del parto se programmabile.',
+    lactation: 'Evitare l\'allattamento durante il trattamento continuativo.',
+    trimesterNotes: 'Rischio emorragico peripartum; se possibile preferire Clopidogrel.',
+    safeAlternatives: 'Clopidogrel è l\'anti-P2Y12 con maggiore profilo di sicurezza documentato in gravidanza.'
+  },
+  'metronidazolo': {
+    fdaCategory: 'B',
+    riskLevel: 'safe',
+    clinicalSummary: 'COMPATIBILE (Cat. B): Nitroimidazolo di prima scelta per infezioni intra-addominali da anaerobi e sepsi pelviche. Ampie evidenze e metanalisi confermano l\'assenza di teratogenicità nell\'uomo.',
+    lactation: 'Passa nel latte; se a dosi piene, distanziare l\'allattamento di 12-24h post-infusione.',
+    trimesterNotes: 'Sicuro in tutti i trimestri in caso di infezione intra-addominale o ginecologica acuta complicata.'
   }
 };
 

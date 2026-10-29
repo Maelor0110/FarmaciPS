@@ -124,7 +124,7 @@ export function calculateChildPugh(params: ChildPughParams): ChildPughResult {
  */
 export function calculateInfusionMlPerHour(
   targetDose: number,
-  unit: 'mcg/kg/min' | 'mcg/min' | 'mg/h' | 'UI/h' | 'mg/kg/h',
+  unit: 'mcg/kg/min' | 'mcg/min' | 'mg/h' | 'UI/h' | 'mg/kg/h' | 'mcg/h',
   concentrationMgOrUiPerMl: number,
   patientWeightKg: number
 ): number {
@@ -157,6 +157,11 @@ export function calculateInfusionMlPerHour(
     case 'mg/kg/h': {
       const mgPerHour = targetDose * patientWeightKg;
       mlPerHour = mgPerHour / concentrationMgOrUiPerMl;
+      break;
+    }
+    case 'mcg/h': {
+      const concMcgPerMl = concentrationMgOrUiPerMl * 1000;
+      mlPerHour = targetDose / concMcgPerMl;
       break;
     }
   }

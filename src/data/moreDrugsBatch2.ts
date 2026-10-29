@@ -7,7 +7,7 @@ export const ADDITIONAL_EMERGENCY_DRUGS_BATCH_2: Omit<EmergencyDrug, 'pregnancy'
     brandNames: ['Haldol', 'Serenase'],
     drugClass: 'Benzodiazepine & Sedativi-Ipnotici',
     clinicalSetting: 'entrambi',
-    emergencyIndications: ['Convulsioni & Neurologia d\'Urgenza', 'Sedazione Procedurale & RSI'],
+    emergencyIndications: ['Agitazione Psicomotoria & Delirium', 'Convulsioni & Neurologia d\'Urgenza', 'Sedazione Procedurale & RSI'],
     quickSummary: 'Antipsicotico tipico butirrofenone ad alta potenza. Farmaco di prima linea per la gestione dell\'agitazione psicomotoria acuta severa, delirium iperattivo nel paziente critico in PS o reparto e psicosi acuta.',
     mechanismOfAction: 'Potente antagonista selettivo dei recettori dopaminergici D2 post-sinaptici nel sistema mesolimbico ed extrapiramidale, riducendo le allucinazioni, il delirio e l\'eccitamento psicomotorio. Debole attività alfa-1 e anticolinergica (minima ipotensione rispetto ad altri neurolettici).',
     dosages: [
@@ -228,7 +228,7 @@ export const ADDITIONAL_EMERGENCY_DRUGS_BATCH_2: Omit<EmergencyDrug, 'pregnancy'
     brandNames: ['Actrapid', 'Humulin R'],
     drugClass: 'Antidoti specifici',
     clinicalSetting: 'entrambi',
-    emergencyIndications: ['Intossicazioni & Antidoti', 'Arresto Cardiaco / ACLS'],
+    emergencyIndications: ['Emergenze Metaboliche & Disionie', 'Intossicazioni & Antidoti', 'Arresto Cardiaco / ACLS'],
     quickSummary: 'Insulina umana solubile endovenosa ad azione rapida. Trattamento cardine nella Chetoacidosi Diabetica (DKA), nello Stato Iperglicemico Iperosmolare (HHS), nello shift cellulare dell\'iperkaliemia grave e nella terapia ad alte dosi (HDIE) per lo shock tossico da calcio-antagonisti e beta-bloccanti.',
     mechanismOfAction: 'Si lega al recettore tirosin-chinasico dell\'insulina: promuove la captazione cellulare di glucosio nel muscolo e nel tessuto adiposo (via traslocazione del GLUT4), stimola la pompa Na+/K+ ATPasi facendo entrare rapidamente il potassio nelle cellule e inibisce la lipolisi e la chetogenesi epatica. Nello shock da calcio-antagonisti (HDIE) ripristina il metabolismo dei carboidrati nei miociti cardiaci aumentandone contrattilità e gettata.',
     dosages: [
@@ -315,7 +315,7 @@ export const ADDITIONAL_EMERGENCY_DRUGS_BATCH_2: Omit<EmergencyDrug, 'pregnancy'
     brandNames: ['Glucosio 33% Fiale 10 ml', 'Glucosio 50% Flaconi'],
     drugClass: 'Soluzioni osmotiche & Cristalloidi',
     clinicalSetting: 'entrambi',
-    emergencyIndications: ['Intossicazioni & Antidoti', 'Convulsioni & Neurologia d\'Urgenza'],
+    emergencyIndications: ['Emergenze Metaboliche & Disionie', 'Intossicazioni & Antidoti', 'Convulsioni & Neurologia d\'Urgenza'],
     quickSummary: 'Soluzione ipertonica di glucosio ad alta concentrazione (Glucosata 33%: 330 mg/ml; Glucosata 50%: 500 mg/ml). Trattamento d\'emergenza salvavita immediato dell\'Ipoglicemia Grave con perdita di coscienza, coma o convulsioni nel paziente adulto in Pronto Soccorso.',
     mechanismOfAction: 'Ripristina istantaneamente la concentrazione plasmatica di glucosio e il gradiente di diffusione cerebrale, interrompendo la neuroglicopenia acuta e prevenendo la necrosi neuronale irreversibile entro 1-3 minuti dall\'iniezione endovenosa.',
     dosages: [

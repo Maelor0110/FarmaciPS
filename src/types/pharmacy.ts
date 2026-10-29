@@ -23,7 +23,11 @@ export type TherapeuticIndication =
   | 'Ansia Acuta & Attacchi di Panico'
   | 'BPCO Riacutizzata'
   | 'Asma Acuto'
-  | 'Reazioni Allergiche & Anafilassi';
+  | 'Reazioni Allergiche & Anafilassi'
+  | 'Emergenze Metaboliche & Disionie'
+  | 'Colica Renale & Addome Acuto'
+  | 'Agitazione Psicomotoria & Delirium'
+  | 'Ictus Ischemico Acuto & Fibrinolisi';
 
 export type DrugClass =
   | 'Vasopressori & Inotropi'
@@ -44,7 +48,9 @@ export type DrugClass =
   | 'Soluzioni osmotiche & Cristalloidi'
   | 'Broncodilatatori'
   | 'Antiemetici & Antivertiginosi'
-  | 'Antistaminici & Antiallergici';
+  | 'Antistaminici & Antiallergici'
+  | 'Antispastici & Spasmolitici'
+  | 'Fibrinolitici';
 
 export type PregnancyRiskLevel =
   | 'safe'            // Compatibile / Prima linea (es. Paracetamolo, Idrocortisone, Eparina, Ceftriaxone)
@@ -81,7 +87,7 @@ export interface HepaticAdjustment {
 export interface InfusionRateConfig {
   defaultConcentrationMgPerMl: number;
   defaultDilutionText: string;
-  unit: 'mcg/kg/min' | 'mcg/min' | 'mg/h' | 'UI/h' | 'mg/kg/h';
+  unit: 'mcg/kg/min' | 'mcg/min' | 'mg/h' | 'UI/h' | 'mg/kg/h' | 'mcg/h';
   minRate: number;
   maxRate: number;
   defaultRate: number;

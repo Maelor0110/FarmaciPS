@@ -7,6 +7,7 @@ import { CalculatorsModal } from './components/CalculatorsModal';
 import { InteractionsChecker } from './components/InteractionsChecker';
 import { QuickProtocolsView } from './components/QuickProtocolsModal';
 import { AnticoagReversalView } from './components/AnticoagReversalView';
+import { ShareModal } from './components/ShareModal';
 import { EMERGENCY_DRUGS } from './data/drugsData';
 import { DrugClass, EmergencyDrug, TherapeuticIndication } from './types/pharmacy';
 import {
@@ -23,7 +24,11 @@ import {
   Compass,
   Smile,
   ShieldCheck,
-  Stethoscope
+  Stethoscope,
+  Brain,
+  Timer,
+  Flame,
+  Zap,
 } from 'lucide-react';
 
 const INITIAL_SEARCH_FILTERS: SearchFilterState = {
@@ -48,6 +53,7 @@ export default function App() {
 
   const [selectedDrug, setSelectedDrug] = useState<EmergencyDrug | null>(null);
   const [isCalculatorsOpen, setIsCalculatorsOpen] = useState<boolean>(false);
+  const [isShareOpen, setIsShareOpen] = useState<boolean>(false);
 
   // Multi-drug interactions cart
   const [interactionsCartIds, setInteractionsCartIds] = useState<string[]>([
@@ -195,6 +201,7 @@ export default function App() {
           }
         }}
         selectedDrugsCount={interactionsCartIds.length}
+        onOpenShare={() => setIsShareOpen(true)}
       />
 
       {/* Main Container */}
@@ -297,7 +304,7 @@ export default function App() {
                 )}
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-2.5">
                 {/* 1. VERTIGINI */}
                 <button
                   onClick={() => quickFilterByIndication('Vertigini & Sindromi Vestibolari')}
@@ -313,7 +320,7 @@ export default function App() {
                     </span>
                     <span className="text-[10px] font-mono font-bold text-slate-400">HINTS</span>
                   </div>
-                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Vertigini</h2>
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Vertigini & Vestibolare</h2>
                   <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
                     Levosulpiride, Torecan, Dimenidrinato
                   </p>
@@ -400,6 +407,90 @@ export default function App() {
                   <h2 className="text-xs font-bold text-slate-900 leading-tight">Reazioni Allergiche</h2>
                   <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
                     Adrenalina IM, Trimeton, Soldesam
+                  </p>
+                </button>
+
+                {/* 6. COLICA RENALE & ADDOME ACUTO */}
+                <button
+                  onClick={() => quickFilterByIndication('Colica Renale & Addome Acuto')}
+                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                    searchFilters.indication === 'Colica Renale & Addome Acuto'
+                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="w-7 h-7 rounded-lg bg-orange-50 text-orange-700 flex items-center justify-center">
+                      <Activity className="w-4 h-4" />
+                    </span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400">EAU / WSES</span>
+                  </div>
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Colica Renale & Addome</h2>
+                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                    Artrosilene, Buscopan, Toradol, Morfina
+                  </p>
+                </button>
+
+                {/* 7. EMERGENZE METABOLICHE & DISIONIE */}
+                <button
+                  onClick={() => quickFilterByIndication('Emergenze Metaboliche & Disionie')}
+                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                    searchFilters.indication === 'Emergenze Metaboliche & Disionie'
+                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
+                      <Flame className="w-4 h-4" />
+                    </span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400">DISIONIE</span>
+                  </div>
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Emergenze Metaboliche</h2>
+                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                    Calcio Gluconato, Insulina, Sol. 3%, Bicarb.
+                  </p>
+                </button>
+
+                {/* 8. AGITAZIONE PSICOMOTORIA & DELIRIUM */}
+                <button
+                  onClick={() => quickFilterByIndication('Agitazione Psicomotoria & Delirium')}
+                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                    searchFilters.indication === 'Agitazione Psicomotoria & Delirium'
+                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="w-7 h-7 rounded-lg bg-purple-50 text-purple-700 flex items-center justify-center">
+                      <Brain className="w-4 h-4" />
+                    </span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400">OBI / PS</span>
+                  </div>
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Agitazione & Delirium</h2>
+                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                    Olanzapina IM, Entumin, Serenase, Tavor
+                  </p>
+                </button>
+
+                {/* 9. ICTUS ISCHEMICO ACUTO & FIBRINOLISI */}
+                <button
+                  onClick={() => quickFilterByIndication('Ictus Ischemico Acuto & Fibrinolisi')}
+                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                    searchFilters.indication === 'Ictus Ischemico Acuto & Fibrinolisi'
+                      ? 'bg-rose-50/80 border-rose-500 ring-2 ring-rose-500/20 shadow-xs'
+                      : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-slate-300 shadow-2xs'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="w-7 h-7 rounded-lg bg-red-50 text-red-700 flex items-center justify-center">
+                      <Timer className="w-4 h-4" />
+                    </span>
+                    <span className="text-[10px] font-mono font-bold text-slate-400">ESO 2024</span>
+                  </div>
+                  <h2 className="text-xs font-bold text-slate-900 leading-tight">Ictus & Fibrinolisi</h2>
+                  <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                    Tenecteplase, Alteplase, Labetalolo, Urapidil
                   </p>
                 </button>
               </div>
@@ -610,6 +701,12 @@ export default function App() {
           }}
         />
       )}
+
+      {/* Share Modal */}
+      <ShareModal
+        isOpen={isShareOpen}
+        onClose={() => setIsShareOpen(false)}
+      />
 
       {/* Clinical Disclaimer Footer */}
       <footer className="bg-white border-t border-slate-200 mt-12 py-6 text-xs text-slate-500">
