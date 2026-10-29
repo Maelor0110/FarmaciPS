@@ -119,25 +119,36 @@ export const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
             </ul>
           </div>
 
-          {/* Explanation regarding GitHub Pages */}
+          {/* Explanation regarding GitHub Pages and Actions */}
           <div className="border border-slate-200 rounded-xl p-4 bg-white space-y-2">
             <div className="flex items-center gap-2 font-bold text-slate-900 text-xs">
               <Github className="w-4 h-4 text-slate-800 shrink-0" />
-              <span>Perché GitHub non ha creato l'indirizzo automaticamente?</span>
+              <span>Hai impostato "GitHub Actions" ma non succedeva nulla? Ecco perché:</span>
             </div>
             <p className="text-slate-600 leading-relaxed text-xs">
-              Su GitHub, un semplice repository di codice non genera da solo una pagina web visibile finché non viene abilitato <strong>GitHub Pages</strong> o una pipeline di build:
+              Quando selezioni <strong>GitHub Actions</strong> in <em>Settings &rarr; Pages</em>, GitHub cerca un file di automazione nella cartella <code>.github/workflows/</code> per compilare il codice con Vite. Se quel file non c'era, l'azione non poteva partire.
             </p>
+            <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-xs space-y-1.5 font-sans">
+              <div className="font-bold text-slate-800">
+                Abbiamo appena creato il file di automazione pronto per te:
+              </div>
+              <ul className="space-y-1 text-slate-600 pl-4 list-disc text-[11px]">
+                <li><strong>Workflow creato:</strong> <code>.github/workflows/deploy.yml</code> (installa i pacchetti, esegue <code>npm run build</code> e pubblica su GitHub Pages).</li>
+                <li><strong>Configurazione Vite aggiornata:</strong> impostato <code>base: './'</code> in <code>vite.config.ts</code> per evitare errori 404 su GitHub Pages.</li>
+              </ul>
+            </div>
+            <div className="text-xs text-slate-700 font-semibold pt-1">
+              Come attivarlo sul tuo repository GitHub:
+            </div>
             <ol className="space-y-1 text-slate-600 text-xs pl-6 list-decimal">
-              <li>Vai sul tuo repository GitHub e clicca su <strong>Settings</strong> (in alto).</li>
-              <li>Nel menu di sinistra seleziona <strong>Pages</strong>.</li>
-              <li>Sotto <strong>Build and deployment</strong>, imposta <em>Source</em> su <em>Deploy from a branch</em> oppure <em>GitHub Actions</em>.</li>
-              <li>Se usi un branch, devi pubblicare la cartella compilata <code>dist/</code> (generata eseguendo <code>npm run build</code>) oppure configurare un workflow con <code>actions/deploy-pages</code>.</li>
+              <li>Invia o sincronizza questo commit su GitHub (<code>git push</code>) in modo che contenga il file <code>.github/workflows/deploy.yml</code>.</li>
+              <li>Vai nella scheda <strong>"Actions"</strong> in alto sul tuo repository GitHub: vedrai la build automatica in esecuzione con la spunta verde.</li>
+              <li>Torna in <strong>Settings &rarr; Pages</strong>: vedrai comparire il tuo indirizzo pubblico: <code>https://tuo-username.github.io/nome-repo/</code>!</li>
             </ol>
-            <div className="bg-amber-50 border border-amber-200 rounded-lg p-2.5 flex items-start gap-2 text-amber-900 text-[11px] mt-2">
-              <Info className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+            <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 flex items-start gap-2 text-emerald-950 text-[11px] mt-2">
+              <Info className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
               <span>
-                <strong>Consiglio pratico:</strong> Non hai bisogno di perdere tempo a configurare GitHub Pages se ti serve solo condividere l'app con colleghi o usarla in Pronto Soccorso: <strong>l'indirizzo Cloud fornito sopra è già pronto, funzionante e costantemente aggiornato</strong>.
+                <strong>Nota:</strong> Ricorda che l'indirizzo Cloud in cima alla finestra è già attivo e utilizzabile subito da qualsiasi dispositivo senza attendere la configurazione di GitHub!
               </span>
             </div>
           </div>
